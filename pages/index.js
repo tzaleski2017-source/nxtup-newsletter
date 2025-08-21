@@ -9,7 +9,7 @@ export default function Home() {
   const handleSubscribe = async (e) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     try {
       const response = await fetch('/api/subscribe', {
         method: 'POST',
@@ -18,7 +18,7 @@ export default function Home() {
         },
         body: JSON.stringify({ email }),
       });
-      
+
       if (response.ok) {
         setIsSubscribed(true);
         setEmail('');
@@ -28,7 +28,7 @@ export default function Home() {
     } catch (error) {
       alert('Error subscribing. Please try again.');
     }
-    
+
     setIsLoading(false);
   };
 
@@ -58,7 +58,7 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-white mb-6 text-center">
                 Stop Missing the Next Big Streamer
               </h2>
-              
+
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
                   <div className="bg-purple-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
@@ -67,7 +67,7 @@ export default function Home() {
                   <h3 className="text-lg font-semibold text-white mb-2">Early Discovery</h3>
                   <p className="text-gray-300">Identify rising talent before they explode</p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="bg-blue-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">🤖</span>
@@ -75,7 +75,7 @@ export default function Home() {
                   <h3 className="text-lg font-semibold text-white mb-2">AI Analysis</h3>
                   <p className="text-gray-300">Data-driven insights from Twitch streams</p>
                 </div>
-                
+
                 <div className="text-center">
                   <div className="bg-indigo-500 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl">📈</span>
@@ -126,7 +126,7 @@ export default function Home() {
               <h3 className="text-2xl font-bold text-white mb-6 text-center">
                 What You'll Get
               </h3>
-              
+
               <div className="space-y-4">
                 <div className="bg-white/10 rounded-lg p-4">
                   <div className="flex justify-between items-center">
@@ -146,7 +146,7 @@ export default function Home() {
                     strong community interaction. Predicted to reach 50K+ followers within 3 months.
                   </p>
                 </div>
-                
+
                 <p className="text-center text-gray-400 text-sm">
                   Sample analysis - Real insights coming soon!
                 </p>
@@ -157,4 +157,4 @@ export default function Home() {
       </div>
     </>
   );
-}
+}                                                                         
