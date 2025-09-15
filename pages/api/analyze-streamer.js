@@ -1,3 +1,5 @@
+export const config = { runtime: 'nodejs' };
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -6,6 +8,10 @@ export default async function handler(req, res) {
   const { username } = req.body;
 
   try {
+    if (!process.env.TWITCH_CLIENT_ID || !process.env.TWITCH_CLIENT_SECRET) {
+      return res.status(500).json({ message: 'Server misconfiguration: missing Twitch credentials' });
+    }
+
     // Get Twitch OAuth token first
     const authResponse = await fetch('https://id.twitch.tv/oauth2/token', {
       method: 'POST',
