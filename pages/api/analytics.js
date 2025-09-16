@@ -11,11 +11,20 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
-  if (req.method !== 'GET') {
+
+  if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
   }
 
-  return res.status(200).json({ ok: true, timestamp: Date.now() });
+  try {
+    const { event, properties } = req.body || {};
+    // For now, just log; replace with your analytics provider later
+    console.log('Analytics event:', event, properties);
+    res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error('Analytics error:', err);
+    res.status(500).json({ ok: false });
+  }
 }
 
 
