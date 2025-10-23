@@ -39,6 +39,20 @@ export default function Home() {
         <title>NXTUP - Discover Tomorrow's Top Streamers Today</title>
         <meta name="description" content="AI-powered insights for agents and managers to discover the next generation of streaming talent" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+        {/* Open Graph */}
+        <meta property="og:title" content="NXTUP - Discover Tomorrow's Top Streamers Today" />
+        <meta property="og:description" content="AI-powered insights for agents and managers to discover the next generation of streaming talent" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="/" />
+        <meta property="og:image" content="/og-image.svg" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="NXTUP - Discover Tomorrow's Top Streamers Today" />
+        <meta name="twitter:description" content="AI-powered insights for agents and managers to discover the next generation of streaming talent" />
+        <meta name="twitter:image" content="/og-image.svg" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
