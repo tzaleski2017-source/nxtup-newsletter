@@ -110,3 +110,22 @@ export const analytics = {
     }).catch(() => {});
   }
 };
+
+// Temporary Twitch API shim to satisfy Admin page build
+export const twitchApi = {
+  /**
+   * Returns filtered Twitch rows. This is a stub to prevent build errors.
+   * Replace with a real backend endpoint when available.
+   */
+  filterByGrowthAndFollowers: async (_params: Record<string, any> = {}): Promise<Array<Record<string, any>>> => {
+    try {
+      // Attempt to reuse list endpoint as a best-effort source
+      const response = await fetch(`${API_BASE_URL}/twitch/list`);
+      const data = await response.json();
+      const rows: Array<Record<string, any>> = data?.streamers || [];
+      return rows;
+    } catch {
+      return [];
+    }
+  }
+};
