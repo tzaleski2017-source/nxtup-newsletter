@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Streamer {
+  id               String     @id // Twitch broadcaster_id
+  login            String
+  displayName      String
+  language         String?
+  profileImageUrl  String?
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+  oauth            OAuthToken?
+  snapshots        Snapshot[]
+}
+
+model OAuthToken {
+  id           String   @id @default(cuid())
+  streamerId   String   @unique
+  accessToken  String
+  refreshToken String
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  streamer     Streamer @relation(fields: [streamerId], references: [id])
+}
+
+model Snapshot {
+  id              String   @id @default(cuid())
+  streamerId      String
+  followers       Int?
+  subscribers     Int?
+  chatEngagement  Int?     // e.g., messages per minute (if tracked)
+  viewerCount     Int?
+  createdAt       DateTime @default(now())
+  streamer        Streamer @relation(fields: [streamerId], references: [id])
+
+  @@index([streamerId, createdAt])
+}
+
+
+
+
